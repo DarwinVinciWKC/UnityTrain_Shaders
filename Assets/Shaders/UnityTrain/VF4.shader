@@ -17,7 +17,7 @@
             v2f vert(in float2 objPos : POSITION) {
                 v2f o;
                 o.oPos = float2(1, 0);
-                o.oPos=objPos;
+                o.oPos = objPos;
                 o.oo = float2(0, 1);
                 o.pos = float4(objPos, 0, 1);
                 o.col = o.pos;
@@ -28,10 +28,12 @@
             //输入的位置顺序有要求，语义有要求...
             //如TEXCOORD0在struct位置的第一个，则
             //语义为TEXCOORD0、TEXCOORD1、COLOR的语义都能接收，
-            //但是语义为POSITION的变量无法接受
-            //
-            fixed4 frag(in fixed2 oPos : TEXCOORD0) : COLOR {
-                return float4(oPos, 0, 1);
+            //但是语义为POSITION的变量无法接收
+            //fixed4 frag(in fixed2 oPos : TEXCOORD0) : COLOR {
+            //    return float4(oPos, 0, 1);
+            //}
+            fixed4 frag(v2f IN) : COLOR {
+                return IN.col;
             }
             ENDCG
         }
