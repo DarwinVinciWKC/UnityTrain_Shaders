@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: VF2
-  m_Shader: {fileID: 4800000, guid: e197a8db7cb4fb34e8ff6a23b563f284, type: 3}
+  m_Shader: {fileID: 4800000, guid: db75610c6f78c35478fc4e71b6a2bb31, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4

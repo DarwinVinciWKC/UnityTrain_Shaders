@@ -8,20 +8,9 @@
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
+            #include "CGLearn/CGINCLearn.cginc"
 
-           void ChangeColor(out float4 c);
-
-           float ChangeColor2(float arr[2])
-           {
-                float sum=0;
-                for(int i=0;i<arr.Length;i++)
-                {
-                    sum+=arr[i];    
-                }
-                return sum;
-           }
-
-            //为什么把out pos 放在前面颜色就无法输出？
+            //为什么把out pos 放在前面颜色就无法输出？参数输出顺序也有关系
             void vert(in float2 objPos : POSITION, out float4 col : COLOR, out float4 pos : POSITION) {
                 pos = float4(objPos, 0, 1);
                 //出现颜色渐变，光栅化阶段会对颜色进行插值
@@ -44,7 +33,6 @@
                     col = float4(0, 0, 1, 1);
                 }
                 //col = pos;
-
             }
 
             void frag(inout float4 col : COLOR) {
@@ -57,11 +45,10 @@
                 float arr[]={0.5,0.5};
                 col.x=ChangeColor2(arr);
             }
-             void ChangeColor(out float4 c)
-            {
-                c=float4(0,1,0,1);
-             }
+
             ENDCG
         }
     }
+    //CG内建函数：
+    //数学函数、几何函数、纹理函数、导数函数
 }
