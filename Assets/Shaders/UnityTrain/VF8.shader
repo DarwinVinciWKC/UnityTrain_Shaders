@@ -16,6 +16,9 @@ Shader "UnityTrain/VF8" {
                 float4 color : COLOR;
             };
 
+            float dis;
+            float r;
+
             v2f vert(appdata_base v) {
                 v2f o;
                 float4 p = o.pos = UnityObjectToClipPos(v.vertex);
@@ -25,12 +28,22 @@ Shader "UnityTrain/VF8" {
                 //    o.color = float4(1, 1, 0, 1);
                 //else
                 //    o.color = float4(0, 1, 1, 1);
-                if (w >= 1)
-                    o.color = float4(1, 1, 0, 1);
-                else if (w <= -1)
-                    o.color = float4(0, 1, 1, 1);
+                //if (w >= 1)
+                //    o.color = float4(1, 1, 0, 1);
+                //else if (w <= -1)
+                //    o.color = float4(0, 1, 1, 1);
+                //else
+                //    o.color = float4(wc, wc, wc, wc);
+
+                //if (w >= -0.1 && w <= 0.1)
+                //    o.color = float4(1, 1, 0, 1);
+                //else
+                //    o.color = float4(wc, wc, wc, wc);
+
+                if (w >= dis && w < dis + r)
+                    o.color = fixed4(_CosTime.w / 2 + 0.5, _CosTime.w / 2 + 0.5, _SinTime.y / 2 + 0.5, 1);
                 else
-                    o.color = float4(wc, wc, wc, wc);
+                    o.color = fixed4(_CosTime.x / 2 + 0.5, _CosTime.y / 2 + 0.5, _SinTime.y / 2 + 0.5, 1);
 
                 return o;
             }
