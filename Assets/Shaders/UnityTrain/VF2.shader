@@ -8,7 +8,7 @@
             #pragma multi_compile_fog
 
             #include "UnityCG.cginc"
-            #include "CGLearn/CGINCLearn.cginc"
+            //#include "CGLearn/CGINCLearn.cginc"
 
             //为什么把out pos 放在前面颜色就无法输出？参数输出顺序也有关系
             void vert(in float2 objPos : POSITION, out float4 col : COLOR, out float4 pos : POSITION) {
@@ -43,7 +43,7 @@
                 //CG中不支持指针，仅值拷贝传参
                 //ChangeColor(col);
                 float arr[]={0.5,0.5};
-                col.x=ChangeColor2(arr);
+                //col.x=ChangeColor2(arr);
             }
 
             ENDCG

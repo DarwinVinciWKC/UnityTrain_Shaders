@@ -18,7 +18,7 @@ Shader "UnityTrain/VF8" {
 
             float dis;
             float r;
-
+            //appdata_base v 值拷贝传参，在这里做的所有操作都不会影响外部的模型参数
             v2f vert(appdata_base v) {
                 v2f o;
                 float4 p = o.pos = UnityObjectToClipPos(v.vertex);
@@ -40,6 +40,7 @@ Shader "UnityTrain/VF8" {
                 //else
                 //    o.color = float4(wc, wc, wc, wc);
 
+                //根据屏幕坐标做颜色调整
                 if (w >= dis && w < dis + r)
                     o.color = fixed4(_CosTime.w / 2 + 0.5, _CosTime.w / 2 + 0.5, _SinTime.y / 2 + 0.5, 1);
                 else
